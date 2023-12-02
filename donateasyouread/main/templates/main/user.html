@@ -1,0 +1,36 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+<div class="container" style="max-width: 60rem;">
+    <h1 class="mb-4">
+        {{ user.name }}
+        <span class="text-secondary">@{{ user.username }}</span>
+    </h1>
+
+    <button type="button" class="btn btn-warning fs-6 mb-4" data-bs-toggle="modal" data-bs-target="#donateModal">
+        Donate ethereum to this user
+        <img
+            src="https://cdn.worldvectorlogo.com/logos/ethereum-1.svg"
+            alt="Ethereum logo vector"
+            width="20"
+        >
+    </button>
+
+    {% if user_eth_address %}
+      {% with user=user from_address=user_eth_address %}
+        {% include 'main/donate.html' %}
+      {% endwith %}
+    {% else %}
+      {% with user=user  %}
+          {% include 'main/donate.html' %}
+      {% endwith %}
+    {% endif %}
+
+    <h3 class="mb-3" style="text-decoration: underline;">User's articles</h3>
+
+    {% with articleList=user_articles%}
+        {% include 'main/articleList.html' %}
+    {% endwith %}
+
+</div>
+{% endblock %}

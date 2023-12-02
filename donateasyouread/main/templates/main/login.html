@@ -1,0 +1,40 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+    <div class="container fs-6">
+        <div class="card m-auto mt-5" style="max-width: 40rem;">
+            <div class="card-header">
+                <h2>Login</h2>
+            </div>
+
+            <div class="card-body">
+                <form action="{% url 'login' %}" method="post" id="loginForm">
+                    {% csrf_token %}
+
+                    {% if loginError %}
+                        <div class="text-danger">Unknown username/password</div>
+                    {% endif %}
+
+                    <div class="row mb-2">
+                        <label for="username" class="col-form-label col-sm-3">Username</label>
+                        <div class="col-sm-9">
+                            <input required type="text" class="form-control" id="username" name="username">
+                        </div>
+                    </div>
+
+                    <div class="row mb-5">
+                        <label for="password" class="col-form-label col-sm-3">Password</label>
+                        <div class="col-sm-9">
+                            <input required type="password" class="form-control" id="password" name="password">
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-warning" id="loginButton">
+                        Login
+                    </button>
+
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

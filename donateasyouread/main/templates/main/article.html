@@ -1,0 +1,44 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+    <div class="text-center mb-5">
+        <h1 class="display-1">{{ article.title }}</h1>
+        <small class="text-body-secondary fs-6">
+            {{ article.time_create|date:"M j" }} · {{ article.mins_to_read }} min read
+        </small>
+    </div>
+    <div class="m-auto fs-6 mb-5" style="max-width: 60rem;">
+        {{ article.content|linebreaks }}
+
+        <div class="mt-5 card text-bg-dark mb-3" style="max-width: 30rem;">
+            <div class="card-header">About author</div>
+            <div class="card-body">
+              <h5 class="card-title">
+                <a href="{{ article.author.get_absolute_url }}" class="author-link">{{ article.author.name }}</a>
+              </h5>
+              <p class="card-text">
+                This blog is based on cryptocurrency donations. If you want to support this author, you can transfer him some Ethereum. Don’t worry, we won’t save your private key and won’t steal crypto from your account 😉 (That’s for sure)
+              </p>
+              <button type="button" class="btn btn-outline-warning" data-bs-toggle="modal" data-bs-target="#donateModal">
+                Donate ethereum
+                <img
+                    src="https://cdn.worldvectorlogo.com/logos/ethereum-1.svg"
+                    alt="Ethereum logo vector"
+                    width="20"
+                >
+              </button>
+            </div>
+        </div>
+    </div>
+
+    {% if user_eth_address %}
+      {% with user=article.author from_address=user_eth_address %}
+        {% include 'main/donate.html' %}
+      {% endwith %}
+    {% else %}
+      {% with user=article.author  %}
+          {% include 'main/donate.html' %}
+      {% endwith %}
+    {% endif %}
+
+{% endblock %}

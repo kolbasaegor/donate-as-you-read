@@ -1,0 +1,47 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+    <div class="container fs-6">
+        <div class="card m-auto mt-5" style="max-width: 60rem;">
+            <div class="card-header">
+                <h2>New Article</h2>
+            </div>
+
+            <div class="card-body">
+                <form action="{% url 'write-article' %}" method="post">
+                    {% csrf_token %}
+
+                    <div class="mb-2 row">
+                        <label for="title" class="col-sm-3 col-form-label">Title</label>
+                        <div class="col-sm-9">
+                            <input required type="text" class="form-control" id="title" name="title">
+                        </div>
+                    </div>
+
+                    <div class="row mb-2">
+                        <label for="mins" class="col-form-label col-sm-3">Mins to read</label>
+                        <div class="col-sm-2">
+                            <input required type="number" min="1" step="1" class="form-control" id="mins" name="mins">
+                        </div>
+                    </div>
+
+                    <div class="mb-5">
+                        <label for="content" class="col-form-label">Content</label>
+                        <textarea
+                            required
+                            class="form-control"
+                            id="content"
+                            name="content"
+                            rows="10"
+                        ></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-warning">
+                        Create
+                    </button>
+
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

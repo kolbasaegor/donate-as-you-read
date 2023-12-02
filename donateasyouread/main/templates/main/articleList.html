@@ -1,0 +1,15 @@
+{% for article in articleList%}
+    <div class="p-4 article-item">
+        <h5>
+            by
+            <a href="{{ article.author.get_absolute_url }}" class="author-link">{{ article.author.username }}</a>
+        </h5>
+        <h3>
+            <a href="{{ article.get_absolute_url }}" class="article-link">{{ article.title }}</a>
+        </h3>
+        <p class="text-secondary">
+            {{ article.time_create|date:"M j" }} · {{ article.mins_to_read }} min read
+        </p>
+        {{ article.content|truncatewords:100|linebreaks }}
+    </div>
+{% endfor %}

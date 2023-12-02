@@ -1,0 +1,30 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+    <div class="container">
+        <h1 class="display-1 mb-3">
+            STATUS: 
+            {% if status %}
+                <span class="text-success">OK</span>
+            {% else %}
+                <span class="text-danger">ERROR</span>
+            {% endif %}
+        </h1>
+
+        <h1 class="display-1 mb-3">DETAILS:</h1>
+
+        <div class="fs-6 text-monospace mb-5">
+            {% if status %}
+                <div class="row">
+                    <p class="col-sm-4">hash (click to explore trancastion on ether scan): </p>
+                    <p class="col-sm-8">
+                        <a href="https://sepolia.etherscan.io/tx/{{ details.hash }}" target="_blank">{{ details.hash }}</a>
+                    </p>
+                </div>
+            {% else %}
+                <p>{{ details }}</p>
+            {% endif %}
+        </div>
+
+        <a href="{% url 'blog' %}" class="btn btn-outline-secondary">&laquo; Back to articles</a>
+{% endblock %}

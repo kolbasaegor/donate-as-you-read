@@ -1,0 +1,52 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+    <div class="container fs-6">
+        <div class="card m-auto mt-5" style="max-width: 40rem;">
+            <div class="card-header">
+                <h2>Register</h2>
+            </div>
+
+            <div class="card-body">
+                <form action="{% url 'register' %}" method="post" id="registerForm">
+                    {% csrf_token %}
+
+                    <div class="mb-2">
+                        <label for="name" class="form-label">Your name</label>
+                        <input required type="text" class="form-control" id="name" name="name">
+                    </div>
+
+                    <div class="mb-2">
+                        <label for="username" class="form-label">Username</label>
+                        <input required type="text" class="form-control" id="username" name="username">
+                    </div>
+
+                    <div class="mb-2">
+                        <label for="ethAddress" class="form-label">Ethereum wallet address</label>
+                        <input required type="text" class="form-control" id="ethAddress" name="ethAddress">
+                        <div id="ethWalletErrorMsg" class="text-danger" hidden></div>
+                    </div>
+
+                    <div class="mb-2">
+                        <label for="password1" class="form-label">Password</label>
+                        <input required type="password" class="form-control" id="password1" name="password1">
+                    </div>
+
+                    <div class="mb-5">
+                        <label for="password2" class="form-label">Confirm password</label>
+                        <input required type="password" class="form-control" id="password2" name="password2">
+                        <div id="passwordErrorMsg" class="text-danger" hidden></div>
+                    </div>
+
+                    <button type="submit" class="btn btn-warning" id="registerButton">
+                        Register
+                    </button>
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+    {% load static %}
+    <script src="{% static 'main/js/register.js' %}"></script>
+{% endblock %}

@@ -13,7 +13,7 @@ WORKDIR /app
 RUN python manage.py migrate && \
     python manage.py collectstatic
 
-EXPOSE 8888
+EXPOSE 8001
 
-CMD ["python", "manage.py", "runserver", "0.0.0.0:8888"]
+CMD ["uvicorn", "donateasyouread.asgi:application", "--port", "8001", "--reload"]
 

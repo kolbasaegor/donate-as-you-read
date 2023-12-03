@@ -1,6 +1,7 @@
 from django.db.models.query import QuerySet
 from django.http import HttpResponseBadRequest, HttpResponseForbidden
 from django.shortcuts import redirect, render
+from django.utils.text import slugify
 from django.views.generic import ListView, DetailView
 from django.contrib.auth.hashers import make_password, check_password
 
@@ -68,7 +69,7 @@ def write_article(request):
 
     article = Article(
         title=title,
-        slug='-'.join(title.split()),
+        slug=slugify(title),
         mins_to_read=int(mins),
         content=content,
         author=User.objects.get(pk=request.session['user_id'])

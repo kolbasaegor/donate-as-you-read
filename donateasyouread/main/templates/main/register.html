@@ -13,28 +13,28 @@
 
                     <div class="mb-2">
                         <label for="name" class="form-label">Your name</label>
-                        <input required type="text" class="form-control" id="name" name="name">
+                        <input required type="text" class="form-control" id="name" name="name" maxlength="100">
                     </div>
 
                     <div class="mb-2">
                         <label for="username" class="form-label">Username</label>
-                        <input required type="text" class="form-control" id="username" name="username">
+                        <input required type="text" class="form-control" id="username" name="username" maxlength="64">
                     </div>
 
                     <div class="mb-2">
                         <label for="ethAddress" class="form-label">Ethereum wallet address</label>
-                        <input required type="text" class="form-control" id="ethAddress" name="ethAddress">
+                        <input required type="text" class="form-control" id="ethAddress" name="ethAddress" maxlength="100">
                         <div id="ethWalletErrorMsg" class="text-danger" hidden></div>
                     </div>
 
                     <div class="mb-2">
                         <label for="password1" class="form-label">Password</label>
-                        <input required type="password" class="form-control" id="password1" name="password1">
+                        <input required type="password" class="form-control" id="password1" name="password1" maxlength="100" minlength="8">
                     </div>
 
                     <div class="mb-5">
                         <label for="password2" class="form-label">Confirm password</label>
-                        <input required type="password" class="form-control" id="password2" name="password2">
+                        <input required type="password" class="form-control" id="password2" name="password2" maxlength="100">
                         <div id="passwordErrorMsg" class="text-danger" hidden></div>
                     </div>
 

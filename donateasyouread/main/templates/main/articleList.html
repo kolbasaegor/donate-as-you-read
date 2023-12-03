@@ -1,4 +1,4 @@
-{% for article in articleList%}
+{% for article in articleList %}
     <div class="p-4 article-item">
         <h5>
             by
@@ -12,4 +12,5 @@
         </p>
         {{ article.content|truncatewords:100|linebreaks }}
     </div>
+    <hr>
 {% endfor %}

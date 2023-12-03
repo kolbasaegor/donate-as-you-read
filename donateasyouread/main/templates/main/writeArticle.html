@@ -14,14 +14,14 @@
                     <div class="mb-2 row">
                         <label for="title" class="col-sm-3 col-form-label">Title</label>
                         <div class="col-sm-9">
-                            <input required type="text" class="form-control" id="title" name="title">
+                            <input required type="text" class="form-control" id="title" name="title" maxlength="100">
                         </div>
                     </div>
 
                     <div class="row mb-2">
                         <label for="mins" class="col-form-label col-sm-3">Mins to read</label>
                         <div class="col-sm-2">
-                            <input required type="number" min="1" step="1" class="form-control" id="mins" name="mins">
+                            <input required type="number" min="1" step="1" max="3600" class="form-control" id="mins" name="mins">
                         </div>
                     </div>
 
@@ -30,6 +30,7 @@
                         <textarea
                             required
                             class="form-control"
+                            maxlength="100000"
                             id="content"
                             name="content"
                             rows="10"
